@@ -12,6 +12,7 @@ class Solution(object):
         while x>0:
             # by using modulus we can extract the last digit from a number
             tab.append(x%10)
+            # remove last digit from original number
             x=(x-x%10)/10
         
         i,j=0,len(tab)-1
