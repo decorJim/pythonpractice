@@ -11,6 +11,6 @@ class Solution:
                i+=1                   # keep shrinking sliding window on the left side move left pointer by one
            
            charSet.add(s[j])          # after sliding window no longer has any duplicate, add the new element to the set
-           res=max(res,i-j+1)         # check if lenght of current window is longer than current max length
+           res=max(res,j-i+1)         # check if lenght of current window is longer than current max length
         
         return res
