@@ -31,4 +31,12 @@ class Solution(object):
                       j+=1      
         
         return ans
+    
+
+sol=Solution()
+nums=[1,-5,2,3,5,4,-6,7,9,-8,8]
+print(sol.threeSum(nums))
+
+    
+    
                 
