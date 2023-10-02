@@ -21,3 +21,10 @@ class Solution:
            depth=max(depth,self.maxDepth(i))  # a given node I check which of the children has more depth
                                               # like finding max in array we call maxDepth to indirectly call dfs for child nodes
         return 1+depth              # current node adds a level to its child's depth so 3+1
+        
+
+        # when function reaches the child of a leaf node aka None, None Node will return 0 in self.maxDepth
+        # the first leaf node will compare max(depth,0) they both are 0 so depth=0
+        # when leaf node return his depth to his parent node we increase of 1 level so depth+1 (0+1)
+        # parent node compares this depth with other child to see which is higher
+        # then overwrite his own depth and adds 1 to it for his own parent
