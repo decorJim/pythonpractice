@@ -19,5 +19,5 @@ class Solution:
                                     # ex: child1:2 child2:1 child3:3    depth=3 
         for i in node.children:
            depth=max(depth,self.maxDepth(i))  # a given node I check which of the children has more depth
-                                              # like finding max in array
+                                              # like finding max in array we call maxDepth to indirectly call dfs for child nodes
         return 1+depth              # current node adds a level to its child's depth so 3+1
