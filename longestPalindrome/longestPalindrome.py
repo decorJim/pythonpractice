@@ -23,3 +23,7 @@ class Solution:
         res=s[maxIndexi:maxIndexj+1]         # extract substring using indexes
 
         return res
+    
+    # NOTICE when we do s[maxIndexi:maxIndexj+1] the second index is the one we will not take therefore
+    # if I have s="aabbcc" and I do s[0:4]="aab" 
+    # so s[0:4+1]="aabb"
