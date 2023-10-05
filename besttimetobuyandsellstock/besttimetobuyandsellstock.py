@@ -1,3 +1,6 @@
+from typing import List
+
+
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
         if 1<=len(prices)<=pow(10,5):
