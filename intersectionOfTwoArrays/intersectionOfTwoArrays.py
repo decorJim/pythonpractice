@@ -12,7 +12,7 @@ def intersection(nums1:List[int],nums2:List[int]):
         if i in uniques:
             res.add(i)
     
-    return sorted(res)
+    return list(res)
 
 
 
