@@ -15,17 +15,17 @@ public class Main {
         /** pointer to find the replacement */
         int j=0;
 
-        while(j<nums.length) {
+        while(i<nums.length) {
 
             /** only move if it is not val */
             if(nums[i]!=val) {
-                i++;
+                nums[j]=nums[i];
+                j++;
             }
-            /** if value found i will keep track of it */
+            /** if value found j will keep track of it */
 
-            /** j will replace val by replacement */
-            nums[i]=nums[j];
-            j++;
+            /** i will replace val by replacement */
+            i++;
 
         }
 
@@ -33,8 +33,10 @@ public class Main {
         for(int num:nums) {
             System.out.print(num+" ");
         }
+        System.out.println();
 
-        return 1;
+
+        return j;
     }
 
     public static void main(String[] args) {
@@ -53,7 +55,10 @@ public class Main {
          */
 
         int[] nums={2,3,4,5,2,3,5};
-        removeElement(nums,2);
+        System.out.println(removeElement(nums,2));
+
+        int[] nums2={4,6,8,4,7,9,5};
+        System.out.println(removeElement(nums2,8));
 
     }
 }
