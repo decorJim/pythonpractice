@@ -29,7 +29,9 @@ def kClosest(points: List[List[int]], k: int) -> List[List[int]]:
 points = [[1,3],[-2,2]]
 k = 1
 
+print()
 print(kClosest(points,k))
+print()
 
 
 
