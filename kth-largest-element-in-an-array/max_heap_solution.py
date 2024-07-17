@@ -17,6 +17,7 @@ def kThLargestElementInArray(nums:List[int], k:int):
     kLargest = 0
     for _ in range(k):
         kLargest = heapq._heappop_max(nums)
+        print(nums)
         print("pop",kLargest)
     
     print()
