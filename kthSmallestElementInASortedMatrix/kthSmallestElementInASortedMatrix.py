@@ -1,7 +1,7 @@
 import heapq
 from typing import List
 
-
+# overall time complexity O( nlogn + (k-1)logn ) worst case k = n then O( nlogn )
 def kThSmallestInSortedArray(matrix:List[List[int]], k:int):
 
     print(matrix[0])
@@ -11,6 +11,7 @@ def kThSmallestInSortedArray(matrix:List[List[int]], k:int):
 
     pq = []
 
+    # O(nlogn) where there is n columns and each insertion takes O(logn)
     for j in range(len(matrix[0])):
         
         # put first row of matrix in min priority queue
@@ -20,6 +21,9 @@ def kThSmallestInSortedArray(matrix:List[List[int]], k:int):
     print()
 
     # after k-1 iteration I want the kth smallest to be in the priority queue
+    # k-1 operations of extraction O((k-1)logn)
+    # k-1 operations of insertion we consider worst case O((k-1)logn)
+    # O( (k-1)logn + (k-1)logn ) -> O((k-1)logn)
     while k > 1:
 
         num, i, j = heapq.heappop(pq)
