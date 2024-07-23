@@ -1,5 +1,3 @@
-
-
 import heapq
 from typing import List
 
@@ -31,7 +29,8 @@ def kThSmallestInSortedArray(matrix:List[List[int]], k:int):
         # compare the next element in the column with the others
         # move current num's row index -> i+1 to next and push it
         # column doesnt change -> j
-        heapq.heappush(pq, (matrix[i+1][j], i+1, j))
+        if i+1 < len(matrix):
+            heapq.heappush(pq, (matrix[i+1][j], i+1, j))
         print(pq)
         print()
 
@@ -44,15 +43,16 @@ def kThSmallestInSortedArray(matrix:List[List[int]], k:int):
     # extract the element at index 0 (num, row, column) -> we extract the num so index 0
     return pq[0][0]
 
-    
-
-        
-
-
-
-
 
 matrix = [[1,5,9],[10,11,13],[12,13,15],[20,23,25]]
 k = 4
 
 print(kThSmallestInSortedArray(matrix,k))
+
+print()
+
+matrix = [[1,18,25],[2,19,26],[3,25,32]]
+k = 6
+
+print(kThSmallestInSortedArray(matrix,k))
+
