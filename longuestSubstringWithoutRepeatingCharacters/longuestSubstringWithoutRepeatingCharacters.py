@@ -14,8 +14,9 @@ def longuestSubstringWithoutRepeatingCharacters(s:str):
 
     while j < len(s):
 
+        # while front window element still exist in set
         while s[j] in uniques:
-            
+            # continu to remove back window element from set
             uniques.remove(s[i])
             i += 1
 
@@ -42,3 +43,6 @@ print()
 s = "pwwkew"
 print(longuestSubstringWithoutRepeatingCharacters(s))
 print()
+
+
+
