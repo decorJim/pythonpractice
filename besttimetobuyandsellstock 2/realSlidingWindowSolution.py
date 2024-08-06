@@ -12,25 +12,19 @@ from typing import List
 
 def besttimetobuyandsellstock(prices: List[int]) -> int:
 
-    # you can buy and sell the stock on the same day
-    i = 0
-    j = 0
-
     maxProfit = 0
-    while j < len(prices):
-        # check if it's a upward trend
-        if prices[j] - prices[i] > 0:
-            maxProfit += prices[j] - prices[i]
-            # since selling the stock at day j then you can buy another one after so move i to current day j
-            i = j
 
-        if prices[i] > prices[j]:
-            i += 1
+    # front of window starts at 1 but never reaches len(prices)
+    for i in range(1,len(prices)):
 
-        else:
-            j += 1
+        # when an upward trend is detected between 2 consecutive days add it to profit
+        if prices[i] - prices[i-1] > 0:
+            maxProfit += prices[i] - prices[i-1]
 
     return maxProfit
+   
+
+   
 
 print(besttimetobuyandsellstock([7,1,5,3,6,4]))
 print()
@@ -41,8 +35,6 @@ print()
 print(besttimetobuyandsellstock([7,6,4,3,1]))
 print()
 
-
-# case where time complexity is O(n^2) because i and j updated at every iteration 
 print(besttimetobuyandsellstock([1, 2, 1, 2, 1, 2, 1, 2]))
 print()
 
