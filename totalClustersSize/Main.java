@@ -1,12 +1,14 @@
-import java.util.regex.Pattern;
-
 public class Main {
     public static int totalClusterSize(int clusterSize,int fileSize) {
-        /** divison round to higher number */
-        int nbClusters=Math.ceilDiv(fileSize,clusterSize);
-        System.out.println("nbClusters:"+nbClusters);
-        int totalSize=nbClusters*clusterSize;
-        return totalSize;
+        /** makes sure that the division will round up **/
+        int totalSize = fileSize + clusterSize;
+
+        /** if the total ever gives a multiple of clusterSize 1 cluster will be
+         * allocated for nothing so -1 prevent perfect multiple
+         */
+        int nbClusters = (totalSize - 1)/clusterSize;
+
+        return nbClusters*clusterSize;
     }
 
     public static void main(String[] args) {
