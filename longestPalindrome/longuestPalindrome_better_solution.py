@@ -1,5 +1,7 @@
 def longuestPalindrome(strs: str):
 
+    oddLength = False
+
     lettersCount = {}
 
     for letter in strs:
@@ -16,7 +18,6 @@ def longuestPalindrome(strs: str):
     print()
 
     palindromeSize = 0
-    largestOdd = 0
 
     for key, value in lettersCount.items():
 
@@ -24,9 +25,14 @@ def longuestPalindrome(strs: str):
             palindromeSize += value
 
         else:
-            largestOdd = max(largestOdd, value)
+            # all other odd number we take their even part and add it
+            palindromeSize += value - 1
+            # this is just to tell that there is at least 1 odd count for a letter
+            oddLength = True
 
-    palindromeSize += largestOdd
+    if oddLength:
+        # add back 1 for the letter that has the highest odd count
+        palindromeSize += 1
 
     return palindromeSize
 
