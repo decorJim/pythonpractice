@@ -12,8 +12,12 @@ def hasPathSum(root: Optional[TreeNode], targetSum: int) -> bool:
     allSum = set()
     if root == None:
         return False
+    
+    # O(n) time complexity
+    # O(n) space complexity because worst case tree is consecutive left childs so call stack stores O(n) recursive calls
+    # the set O(k) where k is the number of path to leaf nodes is then overshadowed by height of tree that grows stack
 
-    def bfs(root: Optional[TreeNode], sum):
+    def dfs(root: Optional[TreeNode], sum):
         # at each new level we add the node's value to the current sum
         sum += root.val
 
@@ -24,12 +28,12 @@ def hasPathSum(root: Optional[TreeNode], targetSum: int) -> bool:
             return
         
         if root.left:
-            bfs(root.left, sum)
+            dfs(root.left, sum)
 
         if root.right:
-            bfs(root.right, sum)
+            dfs(root.right, sum)
 
-    bfs(root, 0)
+    dfs(root, 0)
     
     print(allSum)
 
