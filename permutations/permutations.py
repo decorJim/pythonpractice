@@ -25,15 +25,19 @@ def permute(nums: List[int]):
 
         print("append", permutations)
 
-        # function to append many values to an array
+        # function that adds all elements from permutations into ans
         ans.extend(permutations)
-
-        # put back element we popped at the back
+    
+        # for next iteration we want to restore so it pops the right element
+        # ex: [2,3] -> n = 2, nums = [3]
+        # if we dont add back to nums then next iteration we pop 3 and nums = []
+        # so size shrinks and either length is below 0
+        # or permutation not enough elements
         nums.append(n)
 
     return ans
 
 
-permute([1,2,3])
+print(permute([1,2,3,4]))
 print()
 
