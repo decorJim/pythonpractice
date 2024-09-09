@@ -20,7 +20,7 @@ def permute(nums: List[int]):
 
         print("permutations",permutations)
         for perm in permutations:
-
+            # for each permutations we add n to the back
             perm.append(n)
 
         print("append", permutations)
@@ -40,4 +40,5 @@ def permute(nums: List[int]):
 
 print(permute([1,2,3,4]))
 print()
+
 
