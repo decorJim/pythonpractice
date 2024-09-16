@@ -1,39 +1,52 @@
+"""
+Given a list of integers where the first element of each chunk represents the size of the chunk 
+and the subsequent elements are the chunk's contents, write a function that computes the sum of 
+each chunk's contents and returns a list of these sums.
+
+fileBytes = [3, 234, 543, 19, 2, 32, 67]
+the first element 3 tells us that the next three elements
+234, 543, 19 belong to the chunk.
+
+so ans = [796, 99]
+"""
+
 
 from typing import List
 
 
-def checkSum(fileBytes:List[int]):
-    #
-    # [3,234,543,19,2,32,67]
-    #  i j->     -  i j-> -
-    #
-    #  tricky part is counter is not the subpointer j
-    #  counter only checks if we have accessed all content 
-    #  if size of chunk is 3 counter checks if we counted all 3
-    #  j is made to access each individual content in the chunk so 234,543,19
-    #  i just keeps track of the next metadata of the chunk
+def checkSum(fileBytes: List[int]):
+    
+    chunkIt = 0
+    ans = []
 
-    checksums=[]
+    # code is O(n) time complexity since the outer loop does not revisit elements
+    # that has already been visited it jumps directly to the next size
 
-    i=0
-    while i<len(fileBytes):
-        size=fileBytes[i]
-        sum=0
-        j=i+1
-        counter=0
-        while counter<size:
-            sum+=fileBytes[j]
-            counter+=1
-            j+=1
-        checksums.append(sum)
-        i=i+size+1
-    return checksums
+    while chunkIt < len(fileBytes):
+        
+        currentSum = 0
+        chunkSize = fileBytes[chunkIt]
+
+        # place pointer at index next to current one which is the size
+        i = chunkIt + 1
+
+        # chunkIt points to the size if we add chunkSize to the index we 
+        # get the last element of the chunk. By adding 1 again we get 
+        # the index of the next size that is also the length we need
+        # for i to consider the last element
+        size = chunkIt + chunkSize + 1
+        while i < size:
+            currentSum += fileBytes[i]
+            i += 1
+
+        ans.append(currentSum)
+        chunkIt += chunkSize + 1
 
 
+    return ans
 
-fileBytes=[3,234,543,19,2,32,67]
-print(234+543+19)
-print(32+67)
+    
+fileBytes=[3, 234, 543, 19, 2, 32, 67]
 print(checkSum(fileBytes))
 
 
