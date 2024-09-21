@@ -15,7 +15,7 @@ def removeDuplicatesFromSortedArray(nums: List[int]):
         # if its the first spot or the number is equal
         # to its left neighboor copy its value to
         # the spot of the marker then change the marker spot
-        if i == 0 or nums[i] == nums[i - 1]:
+        if i == 0 or nums[i] != nums[i - 1]:
 
             # the marker always ends up last spot at 
             # 1 spot after the last 
