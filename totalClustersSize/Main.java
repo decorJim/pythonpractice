@@ -1,11 +1,16 @@
 public class Main {
     public static int totalClusterSize(int clusterSize,int fileSize) {
-        /** makes sure that the division will round up **/
-        int totalSize = fileSize + clusterSize;
-
-        /** if the total ever gives a multiple of clusterSize 1 cluster will be
-         * allocated for nothing so -1 prevent perfect multiple
+        /** when dividing a number in java if its not a perfect multiple
+         *  the number will be automatically round down so directly dividing fileSize
+         *  will always end up with 1 cluster short for remaining data if
+         *  its not a perfect multiple
+         *
+         *  to fix that we add another clusterSize - 1 to the fileSize
+         *  then we get a bigger total so that always allocates a
+         *  cluster for the remaining data
          */
+        int totalSize = fileSize + clusterSize;
+        
         int nbClusters = (totalSize - 1)/clusterSize;
 
         return nbClusters*clusterSize;
